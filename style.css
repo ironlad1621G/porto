@@ -732,7 +732,7 @@ a {
 
 @media (max-width: 640px) {
     .section {
-        width: min(100% - 28px, 560px);
+        width: min(100% - 28    px, 560px);
         padding: 78px 0;
     }
 
