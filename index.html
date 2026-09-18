@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Portfolio | Altha Lingga Lekosono</title>
+    <meta
+        name="description"
+        content="Welconme To My Personal Space"
+    >
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+    <header class="site-header glass">
+        <a href="#home" class="logo" aria-label="Ke halaman utama"><i class="fa-solid fa-house"></i>
+            <span></span>
+        </a>
+        <button id="themeToggle" class="theme-toggle" type="button">
+            ☀
+        </button>
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="Buka menu navigasi"
+            aria-expanded="false"
+            aria-controls="mainNav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="main-nav" id="mainNav">
+             <span class="nav-indicator"></span>
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero section" id="home">
+            <div class="hero-content">
+                <p class="eyebrow">Printf("Hello world")</p>
+                <h1>
+                    Altha Lingga Leksono
+                </h1>
+                <p class="hero-role">
+                    I'm a <span id="typingText">Informatics Student</span><span class="cursor">|</span>
+                </p>
+                <p class="hero-description">
+                    Mahasiswa Aktif Universitas Negeri Jember, Experiment Over Theories
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">Lihat Project</a>
+                    <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
+                </div>
+
+                <div class="socials" aria-label="Social media">
+                    <a href="https://github.com/ironlad1621G/" target="_blank" rel="noreferrer"> <i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.instagram.com/azdjgkf?stkn=MWhrdHg4NHU4bDFnaw%3D%3D&utm_source=qr/" target="_blank" rel="noreferrer"><i class ="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="hero-card glass">
+                <div class="profile-ring">
+                    <div class="profile-placeholder">
+                        <img src="assets/L.jpeg" alt="Foto profil">
+                    </div>
+                </div>
+
+                <div class="availability">
+                    <span class="status-dot"></span>
+                    Available for projects
+                </div>
+
+                <div class="mini-stats">
+                    <div>
+                        <strong>03+</strong>
+                        <span>Projects</span>
+                    </div>
+                    <div>
+                        <strong>01</strong>
+                        <span>Year Learning</span>
+                    </div>
+                    <div>
+                        <strong>∞</strong>
+                        <span>Curiosity</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="about">
+            <div class="section-heading">
+                <p class="eyebrow">01 / ABOUT</p>
+                <h2>Tentang Saya</h2>
+                <p>
+                    Sedikit cerita tentang siapa saya dan apa yang sedang saya pelajari.
+                </p>
+            </div>
+
+            
+
+            <div class="about-grid">
+                <article class="glass info-card popup-trigger" data-popup="background">
+                    <p class="card-label">BACKGROUND</p>
+                    <h3>Mahasiswa Universitas Negeri Jember program studi Informatika</h3>
+                    <p>
+                        Mahasiswa Universitas Negeri Jember program studi Informatika. Memiliki passion dalam logika pemrograman, kerja sama tim, dan pengembangan diri di dunia IT.
+                    </p>
+                </article>
+
+                <article class="glass info-card popup-trigger" data-popup="goal">
+                    <p class="card-label">GOAL</p>
+                    <h3>Build. Learn. Solve.</h3>
+                    <p>
+                        Saya ingin terus membuat project nyata, mengembangkan
+                        kemampuan coding, dan membangun portfolio yang mencerminkan
+                        proses belajar saya.
+                    </p>
+                </article>
+
+                    <article class="glass info-card popup-trigger" data-popup="organization">
+                    <p class="card-label">ORGANIZATION</p>
+                    <h3>HMIF UNEJ 2026</h3>
+                    <p>
+                        Aktif berkontribusi dalam lingkungan himpunan mahasiswa. Mengasah kepemimpinan, komunikasi, dan manajemen waktu melalui kolaborasi tim dalam mengelola berbagai kegiatan organisasi.
+                    </p>
+                </article>
+
+                    <article class="glass info-card popup-trigger" data-popup="hobbies">
+                    <p class="card-label">HOBBIES</p>
+                    <h3>Building</h3>
+                    <p>
+                        Saya ingin terus membuat project nyata, mengembangkan
+                        kemampuan coding, dan membangun portfolio yang mencerminkan
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="skills">
+            <div class="section-heading">
+                <p class="eyebrow">02 / SKILLS</p>
+                <h2>Tech Stack</h2>
+                <p>Teknologi yang sedang saya gunakan dan pelajari.</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="glass skill-card">
+                    <span class="skill-number">01</span>
+                    <h3>HTML</h3>
+                    <p>Semantic structure & accessible layout.</p>
+                </div>
+
+                <div class="glass skill-card">
+                    <span class="skill-number">02</span>
+                    <h3>CSS</h3>
+                    <p>Responsive UI, animation & modern visual design.</p>
+                </div>
+
+                <div class="glass skill-card">
+                    <span class="skill-number">03</span>
+                    <h3>JavaScript</h3>
+                    <p>DOM manipulation & interactive web behavior.</p>
+                </div>
+
+                <div class="glass skill-card">
+                    <span class="skill-number">04</span>
+                    <h3>C</h3>
+                    <p> System-level programming, memory management & foundational logic</p>
+                </div>
+
+                <div class="glass skill-card">
+                    <span class="skill-number">05</span>
+                    <h3>Python</h3>
+                    <p>Programming fundamentals & project experiments.</p>
+                </div>
+
+                <div class="glass skill-card">
+                    <span class="skill-number">06</span>
+                    <h3>C++</h3>
+                    <p>Algorithm implementation, object-oriented programming & high-performance logic.</p>
+                </div>
+
+                <div class="glass skill-card">
+                    <span class="skill-number">06</span>
+                    <h3>Scala</h3>
+                    <p>Fungsional Programming</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="projects">
+            <div class="section-heading">
+                <p class="eyebrow">03 / PROJECTS</p>
+                <h2>Project</h2>
+                <p> project bisa diakses melalui github</p>
+            </div>
+
+            <div class="projects-grid">
+                <article class="project-card glass">
+                    <div class="project-top">
+                        <span class="project-tag">WEB</span>
+                        <span class="project-index">01</span>
+                    </div>
+                    <h3>Calculator WEB</h3>
+                    <p>
+                        Kalkulator sederhana dengan HTML, CSS, dan JavaScript.
+                        Input dan hasil dihitung langsung melalui DOM.
+                    </p>
+
+                    <div class="project-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JS</span>
+                    </div>
+                    <a href="#" class="project-link">View project ↗</a>
+                </article>
+                
+
+                <article class="project-card glass featured">
+                    <div class="project-top">
+                        <span class="project-tag">AI / ML</span>
+                        <span class="project-index">02</span>
+                    </div>
+                    <h3>Muraiku</h3>
+                    <p>
+                        Konsep aplikasi monitoring pertumbuhan burung berbasis
+                        computer vision dan pengolahan data.
+                    </p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>YOLOv8</span>
+                        <span>XGBoost</span>
+                    </div>
+                    <a href="#" class="project-link">View project ↗</a>
+                </article>
+
+                <article class="project-card glass">
+                    <div class="project-top">
+                        <span class="project-tag">PORTFOLIO</span>
+                        <span class="project-index">03</span>
+                    </div>
+                    <h3>Liquid Glass Portfolio</h3>
+                    <p>
+                        Website portfolio responsive dengan efek glassmorphism,
+                        CSS murni, dan interaksi JavaScript DOM.
+                    </p>
+                    <div class="project-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>DOM</span>
+                    </div>
+                    <a href="#" class="project-link">View project ↗</a>
+                </article>
+
+                <article class="project-card glass featured">
+                    <div class="project-top">
+                        <span class="project-tag">C++</span>
+                        <span class="project-index">04</span>
+                    </div>
+                    <h3>SIJALAL</h3>
+                        <p>
+                        Aplikasi Inventaris Toko Berbahasa C# Berbasis WINUI 
+                    </p>
+                    <div class="project-tech">
+                        <span>C#</span>
+                        <span>c++</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="contact">
+            <div class="contact-card glass">
+                <div>
+                    <p class="eyebrow">04 / CONTACT</p>
+                    <h2>Punya ide atau project?</h2>
+                    <p>
+                        Kirim pesan lewat email. Bagian ini bisa kamu ganti dengan
+                        kontak asli atau form yang terhubung ke backend.
+                    </p>
+                </div>
+                <a class="btn btn-primary" href="mailto:emailkamu@example.com">
+                    Say Hello →
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="currentYear"></span> azdjgkf. Built with Hope.</p>
+    </footer>
+        <div class="popup-overlay" id="popupOverlay">
+    <div class="popup glass">
+        <button class="popup-close" id="popupClose">
+            ×
+        </button>
+        <h2 id="popupTitle"></h2>
+        <div class="popup-gallery" id="popupGallery"></div>
+    </div>
+    <script src="script.js"></script>
+</div>
+</body>
+</html>
