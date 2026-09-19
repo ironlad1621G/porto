@@ -81,8 +81,6 @@ body {
     color: #060812;
     cursor: pointer;
     transition: 0.75s ease;
-}
-.theme-toggle {
     font-size: 1.2rem;
 }
 
@@ -139,7 +137,7 @@ body.light .btn-primary {
 }
 
 body.light .nav-indicator {
-    background: rgba(0, 0, 0, 0,1); 
+    background: rgba(0, 0, 0, 0.1); 
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
@@ -729,7 +727,18 @@ a {
 }
 
 @media (max-width: 640px) {
-    .glass::before{
+   
+    .glass::before {
+        background: linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0.12),
+            transparent 28%,
+            transparent 70%,
+            rgba(255, 255, 255, 0.04)
+        );
+        pointer-events: none;
+    }
+        .glass::before{
         background: linear-gradient(
             120deg,
             rgba(255, 255, 255, 0.12),
@@ -761,20 +770,6 @@ a {
 
     .project-card {
         min-height: auto;
-    }
-}
-
-@media (max-width: 640px) {
-   
-    .glass::before {
-        background: linear-gradient(
-            120deg,
-            rgba(255, 255, 255, 0.12),
-            transparent 28%,
-            transparent 70%,
-            rgba(255, 255, 255, 0.04)
-        );
-        pointer-events: none;
     }
     
     .section {
@@ -962,4 +957,16 @@ a {
 
 .popup-gallery img:hover {
     transform: scale(1.03);
+}
+
+html, body {
+    background-color: #05080f !important;
+}
+
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center !important;
+    }
 }
