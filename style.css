@@ -10,6 +10,27 @@
     }
 }
 
+.cursor-glow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50vw; /* Ukurannya gedein sekalian */
+    height: 50vw;
+    max-width: 600px;
+    max-height: 600px;
+    /* Warna glow-nya (bisa lu ganti sesuka hati) */
+    background: radial-gradient(circle, rgba(103, 232, 249, 0.25), transparent 60%);
+    border-radius: 50%;
+    pointer-events: none; /* Biar gak ngalangin klik */
+    transform: translate(-50%, -50%);
+    z-index: -2; /* Taruh paling belakang */
+    filter: blur(80px); /* Bikin nyebar ala aurora */
+    
+    /* Animasi pergerakan biar mulus gak patah-patah */
+    transition: left 0.15s ease-out, top 0.15s ease-out;
+}
+
+
 .bg-orb {
     position: fixed;
     width: 280px;
@@ -20,28 +41,6 @@
     filter: blur(55px);
     opacity: 0.7;
     will-change: transform; 
-}
-
-
-.orb-1 {
-    top: 8%;
-    left: -90px;
-    background: rgba(240, 240, 240, 0.28);
-    animation: float 12s ease-in-out infinite;
-}
-
-.orb-2 {
-    top: 44%;
-    right: -90px;
-    background: rgba(34, 211, 238, 0.2);
-    animation: float 15s ease-in-out infinite reverse; 
-}
-
-.orb-3 {
-    bottom: -80px;
-    left: 35%;
-    background: rgba(236, 72, 153, 0.16);
-    animation: float 10s ease-in-out infinite 2s; 
 }
 
 
@@ -61,6 +60,7 @@ body {
     min-height: 100vh;
     color: var(--text-main);
     background: var(--bg);
+    background-attachment: fixed;
     font-family:
         Inter, ui-sans-serif, system-ui, -apple-system,
         BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -97,64 +97,78 @@ body {
 
 
 body.light {
-    --bg:
-        radial-gradient(circle at 15% 20%, rgba(139, 92, 246, 0.18), transparent 28%),
-        radial-gradient(circle at 85% 15%, rgba(34, 211, 238, 0.18), transparent 30%),
-        linear-gradient(135deg, #eef2ff 0%, #f8fafc 52%, #e0f2fe 100%);
-    --text-main: #111827;
-    --text-muted: #5b6475;
-    --line: rgba(255, 255, 255, 0.7);
-    --glass: rgba(255, 255, 255, 0.42);
-    --glass-strong: rgba(255, 255, 255, 0.65);
-    --shadow: 0 24px 80px rgba(50, 70, 100, 0.16);
+    --bg:linear-gradient(rgba(233, 235, 239, 0.85), rgba(252, 252, 252, 0.85)),
+        url(assets/BG4.jpg);
+        
+    /* Teks dibikin lebih pekat/gelap */
+    --text-main: #0f172a; 
+    --text-muted: #475569; 
+    
+    /* FIX 1: Tambahin aksen khusus light mode (lebih gelap biar nabrak background) */
+    --accent-1: #6d28d9; /* Ungu tua */
+    --accent-2: #0284c7; /* Biru laut tua */
+    --accent-3: #db2777; /* Pink tua */
+    
+    /* FIX 2: Garis pembatas diubah jadi gelap transparan, bukan putih */
+    --line: rgba(0, 0, 0, 0.12); 
+    
+    --glass: rgba(255, 255, 255, 0.55);
+    --glass-strong: rgba(255, 255, 255, 0.85);
+    --shadow: 0 24px 80px rgba(50, 70, 100, 0.12);
 }
 
+/* FIX 3: Timpa warna-warna yang hardcoded (nempel mati) pas lagi di light mode */
+body.light .hero-role,
+body.light .project-index,
+body.light .project-link {
+    color: var(--text-main);
+}
+
+body.light .project-tech span {
+    color: var(--text-main);
+    background: rgba(0, 0, 0, 0.06);
+}
+
+body.light .btn-primary {
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--accent-2), var(--accent-1));
+    box-shadow: 0 12px 30px rgba(2, 132, 199, 0.25);
+}
+
+body.light .nav-indicator {
+    background: rgba(0, 0, 0, 0.08); /* Kapsul menu dibikin agak gelap */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light .mini-stats div {
+    background: rgba(0, 0, 0, 0.03); /* Background kotak stats */
+}
 
 :root {
-    --bg:
-        radial-gradient(circle at 15% 20%, rgba(133, 102, 255, 0.22), transparent 28%),
-        radial-gradient(circle at 85% 15%, rgba(60, 180, 255, 0.16), transparent 30%),
-        linear-gradient(135deg, #060812 0%, #101322 52%, #080a12 100%);
-    --text-main: #f5f7fb;
-    --text-muted: #a9b0c2;
-    --line: rgba(255, 255, 255, 0.13);
-    --glass: rgba(255, 255, 255, 0.07);
-    --glass-strong: rgba(255, 255, 255, 0.11);
-    --accent-1: #a78bfa;
-    --accent-2: #67e8f9;
-    --accent-3: #f0abfc;
-    --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
-    
+    --bg:linear-gradient(rgba(5, 8, 15, 0.50), rgba(5, 8, 15, 0.85)),
+        url(assets/BG3.jpg);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Biar pas di-scroll gambarnya tetep diem */
+            --text-main: #ffffff;
+            --text-muted: #8e8e8e;
+            --line: rgba(255, 255, 255, 0.12);
+            --glass: rgba(255, 255, 255, 0.02);
+            --glass-strong: rgba(255, 255, 255, 0.05);
+            --accent-1: #ffffff; /* Pure White */
+            --accent-2: #00aaff; /* Neon Emerald */
+            --accent-3: #00aaff; /* Soft Mint */
+            --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
 }
 
-.bg-orb {
-    position: fixed;
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: -1;
-    filter: blur(55px);
-    opacity: 0.7;
+@keyframes liquidBg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+
 }
 
-.orb-1 {
-    top: 8%;
-    left: -90px;
-    background: rgba(240, 240, 240, 0.28);
-}
 
-.orb-2 {
-    top: 44%;
-    right: -90px;
-    background: rgba(34, 211, 238, 0.2);
-}
-
-.orb-3 {
-    bottom: -80px;
-    left: 35%;
-    background: rgba(236, 72, 153, 0.16);
-}
 
 a {
     color: inherit;
@@ -181,8 +195,8 @@ a {
     );
     border: 1px solid var(--line);
     box-shadow: var(--shadow);
-    backdrop-filter: blur(22px) saturate(135%);
-    -webkit-backdrop-filter: blur(22px) saturate(135%);
+    backdrop-filter: blur(30px) saturate(135%);
+    -webkit-backdrop-filter: blur(50px) saturate(135%);
     overflow: hidden;
 }
 
@@ -190,6 +204,7 @@ a {
     content: "";
     position: absolute;
     inset: 0;
+    border-radius: inherit;
     background:
         linear-gradient(
             120deg,
@@ -286,6 +301,8 @@ a {
     text-decoration: none;
     font-size: 1rem;
     transition: 0.55s ease;
+    text-align: center;
+    border-radius: 12px ;
 }
 
 .nav-link:hover{
@@ -298,18 +315,11 @@ a {
     top: 0;
     left: 0;
     height: 100%;
-    width: 0;
     border-radius: 900px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    opacity: 0;
+    background: rgba(255, 255, 255, 0.15);
+    z-index: 0;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     pointer-events: none;
-    transition:
-        left 0.55s cubic-bezier(.2,.8,.2,1),
-        width 0.55s cubic-bezier(.2,.8,.2,1),
-        opacity 1s ease;
 }
 
 .menu-toggle {
@@ -513,28 +523,40 @@ a {
 
 .mini-stats {
     width: 100%;
-    margin-top: 26px;
+    margin-top: 24px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 }
 
 .mini-stats div {
-    padding: 14px 8px;
+    /* Memaksa bentuk kotak presisi 1:1 dan memusatkan konten secara vertikal & horizontal */
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 8px;
     border: 1px solid var(--line);
-    border-radius: 18px;
+    border-radius: 20px;
     background: rgba(255, 255, 255, 0.04);
     text-align: center;
 }
 
 .mini-stats strong {
-    display: block;
-    font-size: 1.1rem;
+    display: flex;
+    font-size: 1.25rem;
+    line-height: 1;
+    margin-bottom: 4px;
 }
 
 .mini-stats span {
     color: var(--text-muted);
-    font-size: 0.68rem;
+    font-size: 0.65rem;
+    line-height: 1.2;
+    /* Mencegah pemotongan kata acak seperti 'E-' dan 'certificate' */
+    white-space: nowrap; 
 }
 
 .about-grid {
@@ -707,10 +729,23 @@ a {
     font-size: 0.78rem;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 640px) {
+    .glass::before{
+        background: linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0.12),
+            transparent 28%,
+            transparent 70%,
+            rgba(255, 255, 255, 0.04)
+        );
+        pointer-events: none;
+    }
+    .nav-indicator {
+    position: absolute;
+    }
     .hero {
         grid-template-columns: 1fr;
-        gap: 38px;
+        gap: 50px;
     }
 
     .hero-card {
@@ -726,14 +761,30 @@ a {
     }
 
     .project-card {
-        min-height: 300px;
+        min-height: auto;
     }
 }
 
 @media (max-width: 640px) {
+   
+    .glass::before {
+        background: linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0.12),
+            transparent 28%,
+            transparent 70%,
+            rgba(255, 255, 255, 0.04)
+        );
+        pointer-events: none;
+    }
+    
     .section {
-        width: min(100% - 28    px, 560px);
+        width: min(100% - 28px, 560px);
         padding: 78px 0;
+    }
+
+    .mini-stats span {
+        font-size: 0.58rem; /* Ukuran pas agar teks tetap muat dalam kotak 1:1 di layar HP kecil */
     }
 
     .site-header {
@@ -769,8 +820,7 @@ a {
 
     .main-nav.open {
         display: flex;
-        transition: transform 0.7s ease, background 0.25s ease;
-        color: #d8fbff;
+        transition: transform 0.7s ease, background 0.25s ease
     }
 
     .nav-link {
@@ -778,9 +828,9 @@ a {
         transition: 10ms;
     }
 
-    .hero {
-        min-height: auto;   
-        padding-top: 70px;
+    .hero {   
+        padding-top: 0px;
+        padding-bottom: 0px;
     }
 
     .hero-content h1 {
@@ -793,7 +843,7 @@ a {
 
     .hero-card {
         min-height: 340px;
-        padding: 22px;
+        padding: 80px;
     }
 
     .profile-ring {
@@ -802,11 +852,13 @@ a {
     }
 
     .mini-stats {
-        gap: 6px;
+        gap: 20px;
+        display: flex;
+        justify-content: center;
     }
 
     .mini-stats div {
-        padding: 12px 4px;
+        padding: 10px;
     }
 
     .about-grid,

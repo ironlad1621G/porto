@@ -12,7 +12,7 @@ menuToggle.addEventListener("click", () => {
     menuToggle.setAttribute("aria-label", isOpen ? "Tutup menu navigasi" : "Buka menu navigasi");
 });
 
-const roles = ["Cairo With No Context", "AI enthusiast", "Full stack", "Problem Solver"];
+const roles = ["Cairo With No Context", "AI enthusiast", "Sigma",];
 let roleIndex = 0, charIndex = 0, deleting = false;
 function typeRole() {
     const currentRole = roles[roleIndex];
@@ -40,8 +40,15 @@ links.forEach((link) => {
     link.addEventListener("mouseenter", () => {
         const navRect = nav.getBoundingClientRect();
         const linkRect = link.getBoundingClientRect();
+        
+        // 1. Atur posisi X & lebar (berlaku buat Desktop horizontal)
         indicator.style.left = `${linkRect.left - navRect.left}px`;
         indicator.style.width = `${linkRect.width}px`;
+        
+        // 2. Atur posisi Y & tinggi (kunci utama biar jalan di Mobile vertikal)
+        indicator.style.top = `${linkRect.top - navRect.top}px`;
+        indicator.style.height = `${linkRect.height}px`;
+        
         indicator.style.opacity = "1";
     });
 });
@@ -81,6 +88,15 @@ links.forEach(link => {
         }
     });
 });
+
+// Bikin glow ngikutin pergerakan mouse
+const cursorGlow = document.querySelector('.cursor-glow');
+if (cursorGlow && window.innerWidth > 640) { // Cuma aktif di Desktop biar HP gak berat
+    window.addEventListener('mousemove', (e) => {
+        cursorGlow.style.left = `${e.clientX}px`;
+        cursorGlow.style.top = `${e.clientY}px`;
+    });
+}
 const popupOverlay = document.getElementById("popupOverlay");
 const popupClose = document.getElementById("popupClose");
 const popupTitle = document.getElementById("popupTitle");
@@ -97,7 +113,7 @@ const popupData = {
     background: {
         title: "My Background",
         images: [
-            "images/background-1.jpg",
+            "assets/B1.jpg",
             "images/background-2.jpg",
             "images/background-3.jpg"
         ]
@@ -111,13 +127,13 @@ const popupData = {
         ]
     },
     hobbies: {
-        title: "My Hobbies",
+        title: "My E-certificate",
         images: [
-            "images/hobby-1.jpg",
+            "assets/Picture1.jpg",
             "images/hobby-2.jpg",
             "images/hobby-3.jpg"
         ]
-    }
+    }   
 };
 
 document.querySelectorAll(".popup-trigger").forEach(card => {
