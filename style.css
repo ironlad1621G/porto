@@ -110,6 +110,17 @@ body.light {
     --shadow: 0 24px 80px rgba(50, 70, 100, 0.12);
 }
 
+body.light .glass {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.35), 
+        rgba(255, 255, 255, 0.10)
+    ) !important;
+    backdrop-filter: blur(5px) saturate(120%) !important;
+    -webkit-backdrop-filter: blur(5px) saturate(120%) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important; 
+}
+
 body.light .hero-role,
 body.light .project-index,
 body.light .project-link {
@@ -128,12 +139,12 @@ body.light .btn-primary {
 }
 
 body.light .nav-indicator {
-    background: rgba(0, 0, 0, 0.08); 
+    background: rgba(0, 0, 0, 0,1); 
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 body.light .mini-stats div {
-    background: rgba(0, 0, 0, 0.03); 
+    background: rgba(0, 0, 0, 1); 
 }
 
 :root {
@@ -182,14 +193,12 @@ a {
     position: relative;
     background: linear-gradient(
         135deg,
-        rgba(255, 255, 255, 0.13),
-        rgba(255, 255, 255, 0.045)
-    );
-    border: 1px solid var(--line);
-    box-shadow: var(--shadow);
-    backdrop-filter: blur(30px) saturate(135%);
-    -webkit-backdrop-filter: blur(50px) saturate(135%);
-    overflow: hidden;
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.01)
+    ) !important;
+    backdrop-filter: blur(5px) saturate(120%) !important;
+    -webkit-backdrop-filter: blur(5px) saturate(120%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
 }
 
 .glass::before {
@@ -720,10 +729,6 @@ a {
 }
 
 @media (max-width: 640px) {
-    .skill-card, .project-card {
-        transform: none !important; 
-        transition: none !important;
-    }
     .glass::before{
         background: linear-gradient(
             120deg,
@@ -807,9 +812,16 @@ a {
         border: 1px solid var(--line);
         border-radius: 24px;
         background: rgba(12, 15, 27, 0.78);
-        backdrop-filter: blur(22px);
-        -webkit-backdrop-filter: blur(22px);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
         box-shadow: var(--shadow);
+    }
+
+    body.light .main-nav {
+    background: rgba(255, 255, 255, 0.50) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
     }
 
     .main-nav.open {
