@@ -354,6 +354,8 @@ a {
     font-size: clamp(3.6rem, 9vw, 7rem);
     line-height: 0.92;
     letter-spacing: 0.005em;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .hero-role {
@@ -757,7 +759,14 @@ a {
     }
 
     .hero-card {
-        max-width: 520px;
+        min-height: auto;
+        padding: 50px 20px;
+        margin: 32px 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
     }
 
     .skills-grid {
@@ -779,6 +788,9 @@ a {
 
     .mini-stats span {
         font-size: 0.58rem;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.2;
     }
 
     .site-header {
@@ -829,6 +841,10 @@ a {
         transition: 10ms;
     }
 
+    .navbar, header {
+    padding-top: env(safe-area-inset-top, 20px);
+    }
+
     .hero {   
         padding-top: 0px;
         padding-bottom: 0px;
@@ -836,6 +852,8 @@ a {
 
     .hero-content h1 {
         font-size: clamp(3rem, 16vw, 4.8rem);
+        overflow-wrap: break-word;
+        word-wrap: break-word;
     }
 
     .hero-description {
@@ -844,7 +862,7 @@ a {
 
     .hero-card {
         min-height: 340px;
-        padding: 80px;
+        padding: 40px 20px;
     }
 
     .profile-ring {
@@ -853,13 +871,16 @@ a {
     }
 
     .mini-stats {
-        gap: 20px;
+        gap: 8px;
         display: flex;
+        grid-template-columns: repeat(3, 1fr);
         justify-content: center;
     }
 
     .mini-stats div {
         padding: 10px;
+        aspect-ratio: auto;
+        padding: 12px 6px;
     }
 
     .about-grid,
@@ -960,8 +981,13 @@ a {
 }
 
 html, body {
-    background-color: #05080f !important;
+    background-color: #05080f;
+    max-width: 100%;
+    overflow-x: hidden;
 }
+html { background-color: #05080f; }
+
+html:has(body.light) { background-color: #e9ebef; }
 
 @media (max-width: 768px) {
     body {
