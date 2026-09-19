@@ -14,19 +14,16 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 50vw; /* Ukurannya gedein sekalian */
+    width: 50vw; 
     height: 50vw;
     max-width: 600px;
     max-height: 600px;
-    /* Warna glow-nya (bisa lu ganti sesuka hati) */
     background: radial-gradient(circle, rgba(103, 232, 249, 0.25), transparent 60%);
     border-radius: 50%;
-    pointer-events: none; /* Biar gak ngalangin klik */
+    pointer-events: none; 
     transform: translate(-50%, -50%);
-    z-index: -2; /* Taruh paling belakang */
-    filter: blur(80px); /* Bikin nyebar ala aurora */
-    
-    /* Animasi pergerakan biar mulus gak patah-patah */
+    z-index: -2; 
+    filter: blur(80px); 
     transition: left 0.15s ease-out, top 0.15s ease-out;
 }
 
@@ -100,16 +97,12 @@ body.light {
     --bg:linear-gradient(rgba(233, 235, 239, 0.85), rgba(252, 252, 252, 0.85)),
         url(assets/BG4.jpg);
         
-    /* Teks dibikin lebih pekat/gelap */
     --text-main: #0f172a; 
-    --text-muted: #475569; 
+    --text-muted: #475569;    
+    --accent-1: #6d28d9; 
+    --accent-2: #0284c7; 
+    --accent-3: #db2777; 
     
-    /* FIX 1: Tambahin aksen khusus light mode (lebih gelap biar nabrak background) */
-    --accent-1: #6d28d9; /* Ungu tua */
-    --accent-2: #0284c7; /* Biru laut tua */
-    --accent-3: #db2777; /* Pink tua */
-    
-    /* FIX 2: Garis pembatas diubah jadi gelap transparan, bukan putih */
     --line: rgba(0, 0, 0, 0.12); 
     
     --glass: rgba(255, 255, 255, 0.55);
@@ -117,7 +110,6 @@ body.light {
     --shadow: 0 24px 80px rgba(50, 70, 100, 0.12);
 }
 
-/* FIX 3: Timpa warna-warna yang hardcoded (nempel mati) pas lagi di light mode */
 body.light .hero-role,
 body.light .project-index,
 body.light .project-link {
@@ -136,12 +128,12 @@ body.light .btn-primary {
 }
 
 body.light .nav-indicator {
-    background: rgba(0, 0, 0, 0.08); /* Kapsul menu dibikin agak gelap */
+    background: rgba(0, 0, 0, 0.08); 
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 body.light .mini-stats div {
-    background: rgba(0, 0, 0, 0.03); /* Background kotak stats */
+    background: rgba(0, 0, 0, 0.03); 
 }
 
 :root {
@@ -149,15 +141,15 @@ body.light .mini-stats div {
         url(assets/BG3.jpg);
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Biar pas di-scroll gambarnya tetep diem */
+            background-attachment: fixed; 
             --text-main: #ffffff;
             --text-muted: #8e8e8e;
             --line: rgba(255, 255, 255, 0.12);
             --glass: rgba(255, 255, 255, 0.02);
             --glass-strong: rgba(255, 255, 255, 0.05);
-            --accent-1: #ffffff; /* Pure White */
-            --accent-2: #00aaff; /* Neon Emerald */
-            --accent-3: #00aaff; /* Soft Mint */
+            --accent-1: #ffffff;
+            --accent-2: #00aaff;
+            --accent-3: #00aaff; 
             --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
 }
 
@@ -530,7 +522,6 @@ a {
 }
 
 .mini-stats div {
-    /* Memaksa bentuk kotak presisi 1:1 dan memusatkan konten secara vertikal & horizontal */
     aspect-ratio: 1 / 1;
     display: flex;
     flex-direction: column;
@@ -555,7 +546,6 @@ a {
     color: var(--text-muted);
     font-size: 0.65rem;
     line-height: 1.2;
-    /* Mencegah pemotongan kata acak seperti 'E-' dan 'certificate' */
     white-space: nowrap; 
 }
 
@@ -730,6 +720,10 @@ a {
 }
 
 @media (max-width: 640px) {
+    .skill-card, .project-card {
+        transform: none !important; 
+        transition: none !important;
+    }
     .glass::before{
         background: linear-gradient(
             120deg,
@@ -784,7 +778,7 @@ a {
     }
 
     .mini-stats span {
-        font-size: 0.58rem; /* Ukuran pas agar teks tetap muat dalam kotak 1:1 di layar HP kecil */
+        font-size: 0.58rem;
     }
 
     .site-header {

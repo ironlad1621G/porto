@@ -40,12 +40,8 @@ links.forEach((link) => {
     link.addEventListener("mouseenter", () => {
         const navRect = nav.getBoundingClientRect();
         const linkRect = link.getBoundingClientRect();
-        
-        // 1. Atur posisi X & lebar (berlaku buat Desktop horizontal)
         indicator.style.left = `${linkRect.left - navRect.left}px`;
         indicator.style.width = `${linkRect.width}px`;
-        
-        // 2. Atur posisi Y & tinggi (kunci utama biar jalan di Mobile vertikal)
         indicator.style.top = `${linkRect.top - navRect.top}px`;
         indicator.style.height = `${linkRect.height}px`;
         
@@ -89,9 +85,8 @@ links.forEach(link => {
     });
 });
 
-// Bikin glow ngikutin pergerakan mouse
 const cursorGlow = document.querySelector('.cursor-glow');
-if (cursorGlow && window.innerWidth > 640) { // Cuma aktif di Desktop biar HP gak berat
+if (cursorGlow && window.innerWidth > 640) {
     window.addEventListener('mousemove', (e) => {
         cursorGlow.style.left = `${e.clientX}px`;
         cursorGlow.style.top = `${e.clientY}px`;
