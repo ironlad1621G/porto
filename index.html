@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta name="theme-color" content="#05080f">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#05080f" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#e9ebef" media="(prefers-color-scheme: light)">
+    
+    <title>Portfolio | Altha Lingga Leksono</title>
+    <meta name="description" content="Welcome To My Personal Space">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css?v=2">
-    <title>Portfolio | Altha Lingga Lekosono</title>
-    <meta
-        name="description"
-        content="Welconme To My Personal Space"
-    >
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <!-- Background Effects -->
     <div class="cursor-glow"></div>
     <div class="bg-orb orb-1"></div>
     <div class="bg-orb orb-2"></div>
     <div class="bg-orb orb-3"></div>
+
     <header class="site-header glass">
-        <a href="#home" class="logo" aria-label="Ke halaman utama"><i class="fa-solid fa-house"></i>
+        <a href="#home" class="logo" aria-label="Ke halaman utama">
+            <i class="fa-solid fa-house"></i>
             <span></span>
         </a>
-        <button id="themeToggle" class="theme-toggle" type="button">
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">
             ☀
         </button>
 
-        <button
-            class="menu-toggle"
-            id="menuToggle"
-            type="button"
-            aria-label="Buka menu navigasi"
-            aria-expanded="false"
-            aria-controls="mainNav">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mainNav">
             <span></span>
             <span></span>
             <span></span>
         </button>
 
         <nav class="main-nav" id="mainNav">
-             <span class="nav-indicator"></span>
+            <span class="nav-indicator"></span>
             <a href="#home" class="nav-link active">Home</a>
             <a href="#about" class="nav-link">About</a>
             <a href="#skills" class="nav-link">Skills</a>
@@ -52,31 +49,34 @@
     <main>
         <section class="hero section" id="home">
             <div class="hero-content">
-                <p class="eyebrow">Printf("Hello world")</p>
-                <h1>
-                    Altha Lingga Leksono
-                </h1>
+                <p class="eyebrow">printf("Hello world");</p>
+                <h1>Altha Lingga Leksono</h1>
                 <p class="hero-role">
                     I'm a <span id="typingText">Informatics Student</span><span class="cursor">|</span>
                 </p>
                 <p class="hero-description">
                     Mahasiswa Aktif Universitas Negeri Jember, Experiment Over Theories
                 </p>
+                
                 <div class="hero-actions">
                     <a href="#projects" class="btn btn-primary">Lihat Project</a>
                     <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
                 </div>
 
                 <div class="socials" aria-label="Social media">
-                    <a href="https://github.com/ironlad1621G/" target="_blank" rel="noreferrer"> <i class="fa-brands fa-github"></i></a>
-                    <a href="https://www.instagram.com/azdjgkf?stkn=MWhrdHg4NHU4bDFnaw%3D%3D&utm_source=qr/" target="_blank" rel="noreferrer"><i class ="fa-brands fa-instagram"></i></a>
+                    <a href="https://github.com/ironlad1621G/" target="_blank" rel="noreferrer" aria-label="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/azdjgkf?stkn=MWhrdHg4NHU4bDFnaw%3D%3D&utm_source=qr/" target="_blank" rel="noreferrer" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
                 </div>
             </div>
 
             <div class="hero-card glass">
                 <div class="profile-ring">
                     <div class="profile-placeholder">
-                        <img src="assets/L.jpeg" alt="Foto profil">
+                        <img src="assets/L.jpeg" alt="Foto profil Altha Lingga">
                     </div>
                 </div>
 
@@ -96,7 +96,7 @@
                     </div>
                     <div>
                         <strong>2</strong>
-                        <span>E-certificate</span>
+                        <span>E-certificates</span>
                     </div>
                 </div>  
             </div>
@@ -106,19 +106,15 @@
             <div class="section-heading">
                 <p class="eyebrow">01 / ABOUT</p>
                 <h2>Tentang Saya</h2>
-                <p>
-                    Sedikit cerita tentang siapa saya dan apa yang sedang saya pelajari.
-                </p>
+                <p>Sedikit cerita tentang siapa saya dan apa yang sedang saya pelajari.</p>
             </div>
-
-            
 
             <div class="about-grid">
                 <article class="glass info-card popup-trigger" data-popup="background">
                     <p class="card-label">BACKGROUND</p>
-                    <h3>Mahasiswa Universitas Negeri Jember program studi Informatika</h3>
+                    <h3>Mahasiswa Informatika Universitas Negeri Jember</h3>
                     <p>
-                        Mahasiswa Universitas Negeri Jember program studi Informatika. Memiliki passion dalam logika pemrograman, kerja sama tim, dan pengembangan diri di dunia IT.
+                        Memiliki passion dalam logika pemrograman, kerja sama tim, dan pengembangan diri di dunia IT.
                     </p>
                 </article>
 
@@ -126,13 +122,11 @@
                     <p class="card-label">GOAL</p>
                     <h3>Build. Learn. Solve.</h3>
                     <p>
-                        Saya ingin terus membuat project nyata, mengembangkan
-                        kemampuan coding, dan membangun portfolio yang mencerminkan
-                        proses belajar saya.
+                        Saya ingin terus membuat project nyata, mengembangkan kemampuan coding, dan membangun portfolio yang mencerminkan proses belajar saya.
                     </p>
                 </article>
 
-                    <article class="glass info-card popup-trigger" data-popup="organization">
+                <article class="glass info-card popup-trigger" data-popup="organization">
                     <p class="card-label">ORGANIZATION</p>
                     <h3>HMIF UNEJ 2026</h3>
                     <p>
@@ -140,12 +134,10 @@
                     </p>
                 </article>
 
-                    <article class="glass info-card popup-trigger" data-popup="hobbies">
-                    <p class="card-label">Sertificate</p>
+                <article class="glass info-card popup-trigger" data-popup="hobbies">
+                    <p class="card-label">CERTIFICATE</p>
                     <h3>E-certificate</h3>
-                    <p>
-                        -
-                    </p>
+                    <p>Pencapaian dan sertifikasi yang telah saya kumpulkan selama proses belajar.</p>
                 </article>
             </div>
         </section>
@@ -158,46 +150,46 @@
             </div>
 
             <div class="skills-grid">
-                <div class="glass skill-card" data-tilt data-tilt-max="14" data-tilt-speed="30000" data-tilt-glare="true" data-tilt-max-glare="0.2">
+                <div class="glass skill-card" data-tilt data-tilt-max="14" data-tilt-speed="3000" data-tilt-glare="true" data-tilt-max-glare="0.2">
                     <span class="skill-number">01</span>
                     <h3>HTML</h3>
                     <p>Semantic structure & accessible layout.</p>
                 </div>
 
-                <div class="glass skill-card" data-tilt data-tilt-max="14" data-tilt-speed="30000" data-tilt-glare="true" data-tilt-max-glare="0.2">
+                <div class="glass skill-card" data-tilt data-tilt-max="14" data-tilt-speed="3000" data-tilt-glare="true" data-tilt-max-glare="0.2">
                     <span class="skill-number">02</span>
                     <h3>CSS</h3>
                     <p>Responsive UI, animation & modern visual design.</p>
                 </div>
 
-                <div class="glass skill-card" data-tilt data-tilt-max="14" data-tilt-speed="30000" data-tilt-glare="true" data-tilt-max-glare="0.2">
+                <div class="glass skill-card" data-tilt data-tilt-max="14" data-tilt-speed="3000" data-tilt-glare="true" data-tilt-max-glare="0.2">
                     <span class="skill-number">03</span>
                     <h3>JavaScript</h3>
                     <p>DOM manipulation & interactive web behavior.</p>
                 </div>
 
-                <div class="glass skill-card" data-tilt data-tilt-max="14" data-tilt-speed="30000" data-tilt-glare="true" data-tilt-max-glare="0.2">
+                <div class="glass skill-card" data-tilt data-tilt-max="14" data-tilt-speed="3000" data-tilt-glare="true" data-tilt-max-glare="0.2">
                     <span class="skill-number">04</span>
                     <h3>C</h3>
-                    <p> System-level programming, memory management & foundational logic</p>
+                    <p>System-level programming, memory management & foundational logic.</p>
                 </div>
 
-                <div class="glass skill-card" data-tilt data-tilt-max="14" data-tilt-speed="30000" data-tilt-glare="true" data-tilt-max-glare="0.2">
+                <div class="glass skill-card" data-tilt data-tilt-max="14" data-tilt-speed="3000" data-tilt-glare="true" data-tilt-max-glare="0.2">
                     <span class="skill-number">05</span>
                     <h3>Python</h3>
                     <p>Programming fundamentals & project experiments.</p>
                 </div>
 
-                <div class="glass skill-card" data-tilt data-tilt-max="14" data-tilt-speed="30000" data-tilt-glare="true" data-tilt-max-glare="0.2">
+                <div class="glass skill-card" data-tilt data-tilt-max="14" data-tilt-speed="3000" data-tilt-glare="true" data-tilt-max-glare="0.2">
                     <span class="skill-number">06</span>
                     <h3>C++</h3>
-                    <p>Algorithm implementation, object-oriented programming & high-performance logic.</p>
+                    <p>Algorithm implementation, OOP & high-performance logic.</p>
                 </div>
 
-                <div class="glass skill-card" data-tilt data-tilt-max="14" data-tilt-speed="30000" data-tilt-glare="true" data-tilt-max-glare="0.2">
-                    <span class="skill-number">06</span>
+                <div class="glass skill-card" data-tilt data-tilt-max="14" data-tilt-speed="3000" data-tilt-glare="true" data-tilt-max-glare="0.2">
+                    <span class="skill-number">07</span>
                     <h3>Scala</h3>
-                    <p>Fungsional Programming</p>
+                    <p>Functional Programming</p>
                 </div>
             </div>
         </section>
@@ -206,7 +198,7 @@
             <div class="section-heading">
                 <p class="eyebrow">03 / PROJECTS</p>
                 <h2>Project</h2>
-                <p> project bisa diakses melalui github</p>
+                <p>Project bisa diakses melalui GitHub</p>
             </div>
 
             <div class="projects-grid">
@@ -217,10 +209,8 @@
                     </div>
                     <h3>Calculator WEB</h3>
                     <p>
-                        Kalkulator sederhana dengan HTML, CSS, dan JavaScript.
-                        Input dan hasil dihitung langsung melalui DOM.
+                        Kalkulator sederhana dengan HTML, CSS, dan JavaScript. Input dan hasil dihitung langsung melalui DOM.
                     </p>
-
                     <div class="project-tech">
                         <span>HTML</span>
                         <span>CSS</span>
@@ -229,7 +219,6 @@
                     <a href="#" class="project-link">View project ↗</a>
                 </article>
                 
-
                 <article class="project-card glass featured">
                     <div class="project-top">
                         <span class="project-tag">AI / ML</span>
@@ -237,8 +226,7 @@
                     </div>
                     <h3>Muraiku</h3>
                     <p>
-                        Konsep aplikasi monitoring pertumbuhan burung berbasis
-                        computer vision dan pengolahan data.
+                        Konsep aplikasi monitoring pertumbuhan burung berbasis computer vision dan pengolahan data.
                     </p>
                     <div class="project-tech">
                         <span>Python</span>
@@ -255,8 +243,7 @@
                     </div>
                     <h3>Liquid Glass Portfolio</h3>
                     <p>
-                        Website portfolio responsive dengan efek glassmorphism,
-                        CSS murni, dan interaksi JavaScript DOM.
+                        Website portfolio responsive dengan efek glassmorphism, CSS murni, dan interaksi JavaScript DOM.
                     </p>
                     <div class="project-tech">
                         <span>HTML</span>
@@ -268,17 +255,18 @@
 
                 <article class="project-card glass featured">
                     <div class="project-top">
-                        <span class="project-tag">C++</span>
+                        <span class="project-tag">DESKTOP</span>
                         <span class="project-index">04</span>
                     </div>
                     <h3>SIJALAL</h3>
-                        <p>
-                        Aplikasi Inventaris Toko Berbahasa C# Berbasis WINUI 
+                    <p>
+                        Aplikasi Inventaris Toko Berbahasa C# Berbasis WINUI.
                     </p>
                     <div class="project-tech">
                         <span>C#</span>
-                        <span>c++</span>
+                        <span>C++</span>
                     </div>
+                    <a href="#" class="project-link">View project ↗</a>
                 </article>
             </div>
         </section>
@@ -289,10 +277,10 @@
                     <p class="eyebrow">04 / CONTACT</p>
                     <h2>Punya ide atau project?</h2>
                     <p>
-                        Kirim by IG atau pesan ke siniiiiiii 
+                        Kirim DM via IG atau pesan langsung ke WhatsApp saya.
                     </p>
                 </div>
-                <a class="btn btn-primary" href="https://wa.me/qr/DLC43ETM3VG3B1">
+                <a class="btn btn-primary" href="https://wa.me/qr/DLC43ETM3VG3B1" target="_blank" rel="noreferrer">
                     Say Hello →
                 </a>        
             </div>
@@ -302,16 +290,18 @@
     <footer class="site-footer">
         <p>© <span id="currentYear"></span> azdjgkf. Built with Hope.</p>
     </footer>
-        <div class="popup-overlay" id="popupOverlay">
-    <div class="popup glass">
-        <button class="popup-close" id="popupClose">
-            ×
-        </button>
-        <h2 id="popupTitle"></h2>
-        <div class="popup-gallery" id="popupGallery"></div>
+
+    <!-- Modals & Overlays -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup glass">
+            <button class="popup-close" id="popupClose" aria-label="Close modal">×</button>
+            <h2 id="popupTitle"></h2>
+            <div class="popup-gallery" id="popupGallery"></div>
+        </div>
     </div>
-    <script src="script.js?=v2"></script>
+
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-</div>
+    <script src="script.js?v=2"></script>
 </body>
 </html>

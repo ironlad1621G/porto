@@ -1,20 +1,56 @@
+// ==============================
+// DOM ELEMENTS
+// ==============================
 const menuToggle = document.getElementById("menuToggle");
 const mainNav = document.getElementById("mainNav");
-const typingText = document.getElementById("typingText");
 const nav = document.querySelector(".main-nav");
 const links = document.querySelectorAll(".nav-link");
 const indicator = document.querySelector(".nav-indicator");
 const themeToggle = document.getElementById("themeToggle");
+const typingText = document.getElementById("typingText");
+const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+const cursorGlow = document.querySelector('.cursor-glow');
 
+// ==============================
+// THEME TOGGLE (LIGHT/DARK MODE)
+// ==============================
+function updateThemeMeta() {
+    const isLight = document.body.classList.contains("light");
+    // Menyesuaikan warna dengan background CSS kamu
+    if (metaThemeColor) {
+        metaThemeColor.setAttribute("content", isLight ? "#e9ebef" : "#05080f");
+    }
+    themeToggle.textContent = isLight ? "🌙" : "☀";
+}
+
+// Inisialisasi awal
+updateThemeMeta();
+
+themeToggle.addEventListener("click", () => {
+    // Toggle class di body dan html agar warna background selaras
+    document.body.classList.toggle("light");
+    document.documentElement.classList.toggle("light"); 
+    updateThemeMeta();
+});
+
+// ==============================
+// MOBILE MENU TOGGLE
+// ==============================
 menuToggle.addEventListener("click", () => {
     const isOpen = mainNav.classList.toggle("open");
     menuToggle.setAttribute("aria-expanded", isOpen);
     menuToggle.setAttribute("aria-label", isOpen ? "Tutup menu navigasi" : "Buka menu navigasi");
 });
 
-const roles = ["Cairo With No Context", "AI enthusiast", "Sigma",];
+// ==============================
+// TYPING ANIMATION
+// ==============================
+const roles = ["Cairo With No Context", "AI Enthusiast", "Sigma"];
 let roleIndex = 0, charIndex = 0, deleting = false;
+
 function typeRole() {
+    if (!typingText) return;
+    
     const currentRole = roles[roleIndex];
     if (!deleting) {
         typingText.textContent = currentRole.slice(0, charIndex + 1);
@@ -36,35 +72,40 @@ function typeRole() {
 }
 typeRole();
 
+// ==============================
+// NAVIGATION HOVER INDICATOR
+// ==============================
 links.forEach((link) => {
     link.addEventListener("mouseenter", () => {
+        if (!nav || !indicator) return;
         const navRect = nav.getBoundingClientRect();
         const linkRect = link.getBoundingClientRect();
-        indicator.style.left = `${linkRect.left - navRect.left}px`;
-        indicator.style.width = `${linkRect.width}px`;
-        indicator.style.top = `${linkRect.top - navRect.top}px`;
-        indicator.style.height = `${linkRect.height}px`;
         
+        indicator.style.left = `${linkRect.left - navRect.left}px`;
+        indicator.style.top = `${linkRect.top - navRect.top}px`;
+        indicator.style.width = `${linkRect.width}px`;
+        indicator.style.height = `${linkRect.height}px`;
         indicator.style.opacity = "1";
     });
 });
-nav.addEventListener("mouseleave", () => {
-    indicator.style.opacity = "0";
-});
-themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("light");
-    themeToggle.textContent = document.body.classList.contains("light") ? "🌙" : "☀";
-});
 
-document.getElementById("currentYear").textContent = new Date().getFullYear();
+if (nav && indicator) {
+    nav.addEventListener("mouseleave", () => {
+        indicator.style.opacity = "0";
+    });
+}
+
+// ==============================
+// SMOOTH SCROLLING
+// ==============================
 links.forEach(link => {
     link.addEventListener("click", function (e) {
         const targetId = this.getAttribute("href");
         
         if (targetId.startsWith("#")) {
             e.preventDefault(); 
-            
             const target = document.querySelector(targetId);
+            
             if (target) {
                 const headerOffset = 100;
                 const elementPosition = target.getBoundingClientRect().top;
@@ -75,6 +116,7 @@ links.forEach(link => {
                     behavior: "smooth"
                 });
   
+                // Tutup menu mobile setelah klik
                 if (mainNav.classList.contains("open")) {
                     mainNav.classList.remove("open");
                     menuToggle.setAttribute("aria-expanded", "false");
@@ -85,49 +127,56 @@ links.forEach(link => {
     });
 });
 
-const cursorGlow = document.querySelector('.cursor-glow');
+// ==============================
+// DYNAMIC YEAR IN FOOTER
+// ==============================
+const currentYearEl = document.getElementById("currentYear");
+if (currentYearEl) {
+    currentYearEl.textContent = new Date().getFullYear();
+}
+
+// ==============================
+// CURSOR GLOW EFFECT (OPTIMIZED)
+// ==============================
 if (cursorGlow && window.innerWidth > 640) {
+    let mouseX = 0, mouseY = 0;
+    
     window.addEventListener('mousemove', (e) => {
-        cursorGlow.style.left = `${e.clientX}px`;
-        cursorGlow.style.top = `${e.clientY}px`;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        // Menggunakan requestAnimationFrame untuk performa lebih mulus
+        requestAnimationFrame(() => {
+            cursorGlow.style.left = `${mouseX}px`;
+            cursorGlow.style.top = `${mouseY}px`;
+        });
     });
 }
+
+// ==============================
+// POPUP GALLERY MODAL
+// ==============================
 const popupOverlay = document.getElementById("popupOverlay");
 const popupClose = document.getElementById("popupClose");
 const popupTitle = document.getElementById("popupTitle");
 const popupGallery = document.getElementById("popupGallery");
+
 const popupData = {
     goal: {
         title: "My Goals",
-        images: [
-            "images/goal-1.jpg",
-            "images/goal-2.jpg",
-            "images/goal-3.jpg"
-        ]
+        images: ["images/goal-1.jpg", "images/goal-2.jpg", "images/goal-3.jpg"]
     },
     background: {
         title: "My Background",
-        images: [
-            "assets/B1.jpg",
-            "images/background-2.jpg",
-            "images/background-3.jpg"
-        ]
+        images: ["assets/B1.jpg", "images/background-2.jpg", "images/background-3.jpg"]
     },
     organization: {
         title: "Organization",
-        images: [
-            "images/org-1.jpg",
-            "images/org-2.jpg",
-            "images/org-3.jpg"
-        ]
+        images: ["images/org-1.jpg", "images/org-2.jpg", "images/org-3.jpg"]
     },
     hobbies: {
         title: "My E-certificate",
-        images: [
-            "assets/Picture1.jpg",
-            "images/hobby-2.jpg",
-            "images/hobby-3.jpg"
-        ]
+        images: ["assets/Picture1.jpg", "images/hobby-2.jpg", "images/hobby-3.jpg"]
     }   
 };
 
@@ -135,6 +184,9 @@ document.querySelectorAll(".popup-trigger").forEach(card => {
     card.addEventListener("click", () => {
         const type = card.dataset.popup;
         const data = popupData[type];
+        
+        if (!data) return;
+
         popupTitle.textContent = data.title;
         popupGallery.innerHTML = "";
 
@@ -148,14 +200,14 @@ document.querySelectorAll(".popup-trigger").forEach(card => {
     });
 });
 
-
-popupClose.addEventListener("click", () => {
-    popupOverlay.classList.remove("active");
-});
-
-popupOverlay.addEventListener("click", (e) => {
-    if (e.target === popupOverlay) {
+if (popupClose && popupOverlay) {
+    popupClose.addEventListener("click", () => {
         popupOverlay.classList.remove("active");
-    }
+    });
 
-});
+    popupOverlay.addEventListener("click", (e) => {
+        if (e.target === popupOverlay) {
+            popupOverlay.classList.remove("active");
+        }
+    });
+}
