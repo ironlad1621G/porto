@@ -1,5 +1,4 @@
 :root {
-    /* Variabel Dark Mode (Default) */
     --bg-main: linear-gradient(rgba(5, 8, 15, 0.50), rgba(5, 8, 15, 0.85)), url(assets/BG3.jpg);
     --text-main: #ffffff;
     --text-muted: #8e8e8e;
@@ -13,7 +12,6 @@
 }
 
 body.light {
-    /* Variabel Light Mode */
     --bg-main: linear-gradient(rgba(233, 235, 239, 0.85), rgba(252, 252, 252, 0.85)), url(assets/BG4.jpg);
     --text-main: #0f172a;
     --text-muted: #475569;
@@ -26,9 +24,6 @@ body.light {
     --shadow: 0 24px 80px rgba(50, 70, 100, 0.12);
 }
 
-/* ==============================
-   GLOBAL & RESET
-   ============================== */
 * {
     margin: 0;
     padding: 0;
@@ -80,9 +75,6 @@ button {
     padding: 110px 0;
 }
 
-/* ==============================
-   ANIMATIONS & BACKGROUNDS
-   ============================== */
 @keyframes float {
     0%, 100% { transform: translate(0, 0) scale(1); }
     33% { transform: translate(15px, -25px) scale(1.05); }
@@ -129,9 +121,6 @@ button {
     will-change: transform;
 }
 
-/* ==============================
-   TYPOGRAPHY & UTILS
-   ============================== */
 .glass {
     position: relative;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01)) !important;
@@ -179,9 +168,6 @@ button {
     color: transparent;
 }
 
-/* ==============================
-   HEADER & NAVIGATION
-   ============================== */
 .site-header {
     position: fixed !important;
     top: 20px;
@@ -189,7 +175,7 @@ button {
     transform: translateX(50%); 
     z-index: 99999999999999;
     width: 90%; 
-    max-width: 800px; /* Sesuaikan dengan lebar menu aslimu */  
+    max-width: 800px;
     margin: 18px auto 0;
     min-height: 68px;
     padding: 0 20px 0 24px;
@@ -204,8 +190,7 @@ header.site-header {
     left: 50% !important;
     transform: translateX(-50%) !important;
     z-index: 99999 !important;
-    width: 90% !important; /* Biar ukurannya berbentuk kapsul */
-    max-width: 700px !important;
+    width: 90% !important; 
 }
 
 .logo {
@@ -305,9 +290,6 @@ header.site-header {
     background: rgba(255, 255, 255, 0.16);
 }
 
-/* ==============================
-   HERO SECTION
-   ============================== */
 .hero {
     min-height: calc(100vh - 100px);
     padding-top: 90px;
@@ -506,9 +488,6 @@ header.site-header {
     white-space: nowrap;
 }
 
-/* ==============================
-   GRIDS & CARDS
-   ============================== */
 .about-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -675,9 +654,6 @@ header.site-header {
     font-size: 0.78rem;
 }
 
-/* ==============================
-   POPUP MODAL
-   ============================== */
 .popup-overlay {
     position: fixed;
     inset: 0;
@@ -749,9 +725,6 @@ header.site-header {
     transform: scale(1.03);
 }
 
-/* ==============================
-   LIGHT MODE OVERRIDES (SPESIFIK KOMPONEN)
-   ============================== */
 body.light .glass {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.10)) !important;
     backdrop-filter: blur(2px) saturate(120%) !important;
@@ -771,17 +744,9 @@ body.light .project-tech span {
 }
 
 body.light .site-header.glass {
-    /* Turunkan opacity putihnya jadi sangat tipis (0.1 atau 0.05) */
     background: rgba(255, 255, 255, 0.1) !important; 
-    
-    /* Blur sedang sudah cukup jika warnanya tipis */
     backdrop-filter: blur(1px) !important;
     -webkit-backdrop-filter: blur(1px) !important;
-    
-    /* Tambahkan border tipis untuk mempertegas bentuk kapsul (opsional tapi disarankan) */
-    border: 1px solid rgba(255, 255, 255, 0.4) !important;
-    
-    /* Tambahkan bayangan sangat halus agar header tidak menyatu dengan background belakang */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05) !important;
 }
 
@@ -819,16 +784,13 @@ body.light .main-nav {
     border: none !important;
 }
 
-/* Pastikan teks link menu juga transparan */
 .nav-link,
 body.light .nav-link {
     background: none !important;
     background-color: transparent !important;
 }
 
-/* ==============================
-   MEDIA QUERIES (RESPONSIVE)
-   ============================== */
+
 @media (max-width: 768px) {
     body {
         background-attachment: scroll !important;
@@ -974,11 +936,8 @@ body.light .nav-link {
     }
 }
 
-/* =========================================
-   PERBAIKAN KHUSUS MOBILE (HP)
-   ========================================= */
 @media (max-width: 768px) {
-    /* 1. Matikan blur indikator HANYA di HP agar tidak jadi blob */
+
     .nav-indicator {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
@@ -991,7 +950,6 @@ body.light .nav-link {
         border: none !important;
     }
 
-    /* 2. Rapikan dropdown menu navigasi HP */
     .main-nav {
         position: absolute !important;
         top: calc(100% + 10px) !important;
@@ -1003,7 +961,6 @@ body.light .nav-link {
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
     }
 
-    /* Background dropdown menu mobile - Mode Terang */
     body.light .main-nav {
         background: rgba(245, 247, 250, 0.9) !important;
         backdrop-filter: blur(2px) !important;
@@ -1011,7 +968,6 @@ body.light .nav-link {
         border: 1px solid rgba(0, 0, 0, 0.08) !important;
     }
 
-    /* Background dropdown menu mobile - Mode Gelap */
     body:not(.light) .main-nav {
         background: rgba(10, 15, 26, 0.9) !important;
         backdrop-filter: blur(16px) !important;
@@ -1022,8 +978,8 @@ body.light .nav-link {
     body.light .nav-link.active {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
-        background: rgba(0, 0, 0, 0.1) !important; /* Warna abu-abu sangat tipis dan bersih */
-        box-shadow: none !important; /* Menghapus shadow yang mungkin bikin efek buram */
+        background: rgba(0, 0, 0, 0.1) !important; 
+        box-shadow: none !important; 
         border: none !important;
     }
 

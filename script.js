@@ -1,6 +1,3 @@
-// ==============================
-// DOM ELEMENTS
-// ==============================
 const menuToggle = document.getElementById("menuToggle");
 const mainNav = document.getElementById("mainNav");
 const nav = document.querySelector(".main-nav");
@@ -11,40 +8,30 @@ const typingText = document.getElementById("typingText");
 const metaThemeColor = document.querySelector('meta[name="theme-color"]');
 const cursorGlow = document.querySelector('.cursor-glow');
 
-// ==============================
-// THEME TOGGLE (LIGHT/DARK MODE)
-// ==============================
 function updateThemeMeta() {
     const isLight = document.body.classList.contains("light");
-    // Menyesuaikan warna dengan background CSS kamu
     if (metaThemeColor) {
         metaThemeColor.setAttribute("content", isLight ? "#e9ebef" : "#05080f");
     }
     themeToggle.textContent = isLight ? "🌙" : "☀";
 }
 
-// Inisialisasi awal
 updateThemeMeta();
 
 themeToggle.addEventListener("click", () => {
-    // Toggle class di body dan html agar warna background selaras
     document.body.classList.toggle("light");
     document.documentElement.classList.toggle("light"); 
     updateThemeMeta();
 });
 
-// ==============================
-// MOBILE MENU TOGGLE
-// ==============================
+
 menuToggle.addEventListener("click", () => {
     const isOpen = mainNav.classList.toggle("open");
     menuToggle.setAttribute("aria-expanded", isOpen);
     menuToggle.setAttribute("aria-label", isOpen ? "Tutup menu navigasi" : "Buka menu navigasi");
 });
 
-// ==============================
-// TYPING ANIMATION
-// ==============================
+
 const roles = ["Cairo With No Context", "AI Enthusiast", "Sigma"];
 let roleIndex = 0, charIndex = 0, deleting = false;
 
@@ -72,9 +59,6 @@ function typeRole() {
 }
 typeRole();
 
-// ==============================
-// NAVIGATION HOVER INDICATOR
-// ==============================
 links.forEach((link) => {
     link.addEventListener("mouseenter", () => {
         if (!nav || !indicator) return;
@@ -95,9 +79,6 @@ if (nav && indicator) {
     });
 }
 
-// ==============================
-// SMOOTH SCROLLING
-// ==============================
 links.forEach(link => {
     link.addEventListener("click", function (e) {
         const targetId = this.getAttribute("href");
@@ -115,8 +96,7 @@ links.forEach(link => {
                     top: offsetPosition,
                     behavior: "smooth"
                 });
-  
-                // Tutup menu mobile setelah klik
+
                 if (mainNav.classList.contains("open")) {
                     mainNav.classList.remove("open");
                     menuToggle.setAttribute("aria-expanded", "false");
@@ -127,25 +107,17 @@ links.forEach(link => {
     });
 });
 
-// ==============================
-// DYNAMIC YEAR IN FOOTER
-// ==============================
 const currentYearEl = document.getElementById("currentYear");
 if (currentYearEl) {
     currentYearEl.textContent = new Date().getFullYear();
 }
 
-// ==============================
-// CURSOR GLOW EFFECT (OPTIMIZED)
-// ==============================
 if (cursorGlow && window.innerWidth > 640) {
     let mouseX = 0, mouseY = 0;
     
     window.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        
-        // Menggunakan requestAnimationFrame untuk performa lebih mulus
         requestAnimationFrame(() => {
             cursorGlow.style.left = `${mouseX}px`;
             cursorGlow.style.top = `${mouseY}px`;
@@ -153,9 +125,6 @@ if (cursorGlow && window.innerWidth > 640) {
     });
 }
 
-// ==============================
-// POPUP GALLERY MODAL
-// ==============================
 const popupOverlay = document.getElementById("popupOverlay");
 const popupClose = document.getElementById("popupClose");
 const popupTitle = document.getElementById("popupTitle");
