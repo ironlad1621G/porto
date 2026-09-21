@@ -186,22 +186,69 @@ button {
 
 .bg-orb {
     position: fixed;
-    width: 280px;
-    height: 280px;
+    width: 600px;
+    height: 600px;
     border-radius: 50%;
     pointer-events: none;
     z-index: -1;
-    filter: blur(55px);
-    opacity: 0.7;
-    will-change: transform;
+    filter: blur(80px);
+    opacity: 0.6;
+    will-change: transform, border-radius;
+    animation: blobMorph 15s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+    top: -150px;
+    left: -150px;
+    background: radial-gradient(circle, rgba(103, 232, 249, 0.4), rgba(4, 41, 128, 0.2));
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    bottom: -150px;
+    right: -150px;
+    background: radial-gradient(circle, rgba(216, 180, 254, 0.3), rgba(126, 34, 206, 0.2));
+    animation-delay: -5s;
+    animation-direction: alternate-reverse;
+}
+
+.orb-3 {
+    top: 40%;
+    left: 40%;
+    background: radial-gradient(circle, rgba(94, 234, 212, 0.25), rgba(15, 118, 110, 0.15));
+    animation-delay: -10s;
+}
+
+@keyframes blobMorph {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    33% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: translate(100px, 50px) rotate(120deg) scale(1.1);
+    }
+    66% {
+        border-radius: 70% 30% 50% 50% / 50% 70% 30% 50%;
+        transform: translate(-50px, 100px) rotate(240deg) scale(0.9);
+    }
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: translate(0, 0) rotate(360deg) scale(1);
+    }
 }
 
 .glass {
     position: relative;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01)) !important;
-    backdrop-filter: blur(1px) saturate(120%) !important;
-    -webkit-backdrop-filter: blur(1px) saturate(120%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02)) !important;
+    backdrop-filter: blur(24px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 
+        0 8px 32px 0 rgba(0, 0, 0, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.15),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.1) !important;
+    overflow: hidden;
 }
 
 .glass::before {
@@ -209,8 +256,91 @@ button {
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: linear-gradient(120deg, rgba(255, 255, 255, 0.12), transparent 28%, transparent 70%, rgba(255, 255, 255, 0.04));
+    background: linear-gradient(
+        120deg, 
+        rgba(255, 255, 255, 0.3) 0%, 
+        rgba(255, 255, 255, 0.05) 20%, 
+        transparent 50%, 
+        rgba(255, 255, 255, 0.05) 80%,
+        rgba(255, 255, 255, 0.1) 100%
+    );
     pointer-events: none;
+    z-index: 1;
+}
+
+/* Liquid Shimmer Effect */
+.glass::after {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.08),
+        transparent
+    );
+    transform: rotate(45deg) translateY(-100%);
+    pointer-events: none;
+    z-index: 2;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.glass:hover::after {
+    transform: rotate(45deg) translateY(100%);
+}
+
+/* ---- Fluid Aurora ambient + liquid beam (iOS 26 style) ---- */
+body::after {
+    content: "";
+    position: fixed;
+    inset: -20%;
+    z-index: -3;
+    pointer-events: none;
+    background:
+        radial-gradient(40% 35% at 20% 20%, rgba(103, 232, 249, 0.16), transparent 70%),
+        radial-gradient(35% 30% at 80% 30%, rgba(232, 121, 249, 0.14), transparent 70%),
+        radial-gradient(45% 40% at 50% 85%, rgba(129, 140, 248, 0.16), transparent 70%);
+    filter: blur(60px) saturate(140%);
+    animation: auroraDrift 18s ease-in-out infinite alternate;
+}
+
+@keyframes auroraDrift {
+    0% { transform: translate3d(-3%, -2%, 0) scale(1) rotate(0deg); opacity: 0.7; }
+    50% { transform: translate3d(3%, 2%, 0) scale(1.08) rotate(8deg); opacity: 1; }
+    100% { transform: translate3d(-2%, 3%, 0) scale(1.04) rotate(-8deg); opacity: 0.8; }
+}
+
+
+
+.btn-primary {
+    background: linear-gradient(120deg, #d8fbff, #3f8fba, #67e8f9, #d8fbff);
+    background-size: 250% 250%;
+    animation: liquidGradient 7s ease infinite;
+}
+
+@keyframes liquidGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.status-dot {
+    animation: dotPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes dotPing {
+    0% { box-shadow: 0 0 0 0 rgba(112, 240, 165, 0.6), 0 0 12px rgba(112, 240, 165, 0.75); }
+    70% { box-shadow: 0 0 0 9px rgba(112, 240, 165, 0), 0 0 12px rgba(112, 240, 165, 0.75); }
+    100% { box-shadow: 0 0 0 0 rgba(112, 240, 165, 0), 0 0 12px rgba(112, 240, 165, 0.75); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body::after,
+    .btn-primary,
+    .status-dot,
+    .bg-orb {
+        animation: none !important;
+    }
 }
 
 .eyebrow {
