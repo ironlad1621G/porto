@@ -111,8 +111,6 @@ const currentYearEl = document.getElementById("currentYear");
 if (currentYearEl) {
     currentYearEl.textContent = new Date().getFullYear();
 }
-
-// Add iOS fluid lerp logic for cursor
 if (cursorGlow && window.innerWidth > 640) {
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
@@ -125,7 +123,6 @@ if (cursorGlow && window.innerWidth > 640) {
     });
 
     function animateCursor() {
-        // Smooth lerp for iOS fluid feel
         cursorX += (mouseX - cursorX) * 0.12;
         cursorY += (mouseY - cursorY) * 0.12;
         
@@ -170,19 +167,15 @@ const popupGallery = document.getElementById("popupGallery");
 const popupData = {
     goal: {
         title: "My Goals",
-        images: ["images/goal-1.jpg", "images/goal-2.jpg", "images/goal-3.jpg"]
     },
     background: {
         title: "My Background",
-        images: ["assets/B1.jpg", "images/background-2.jpg", "images/background-3.jpg"]
     },
     organization: {
         title: "Organization",
-        images: ["images/org-1.jpg", "images/org-2.jpg", "images/org-3.jpg"]
     },
     hobbies: {
         title: "My E-certificate",
-        images: ["assets/Picture1.jpg", "images/hobby-2.jpg", "images/hobby-3.jpg"]
     }   
 };
 
