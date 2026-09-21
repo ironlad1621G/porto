@@ -137,7 +137,6 @@ if (cursorGlow && window.innerWidth > 640) {
     animateCursor();
 }
 
-// Scroll Reveal with IntersectionObserver
 const revealElements = document.querySelectorAll('section > div, article, .hero-content, .hero-card');
 revealElements.forEach(el => {
     el.classList.add('reveal');
@@ -151,8 +150,7 @@ const revealOptions = {
 const revealObserver = new IntersectionObserver(function(entries, observer) {
     entries.forEach((entry, index) => {
         if (!entry.isIntersecting) return;
-        
-        // Add stagger based on dom order for siblings
+
         entry.target.style.animationDelay = `${(index % 5) * 0.1}s`;
         entry.target.classList.add('visible');
         observer.unobserve(entry.target);
