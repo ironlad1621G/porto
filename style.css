@@ -1,10 +1,10 @@
 :root {
     --bg-main: linear-gradient(rgba(5, 8, 15, 0.50), rgba(5, 8, 15, 0.85)), url(assets/BG3.jpg);
     --text-main: #ffffff;
-    --text-muted: #8e8e8e;
-    --line: rgba(255, 255, 255, 0.12);
-    --glass: rgba(255, 255, 255, 0.02);
-    --glass-strong: rgba(255, 255, 255, 0.05);
+    --text-muted: #a0a0a0;
+    --line: rgba(255, 255, 255, 0.08);
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-strong: rgba(255, 255, 255, 0.06);
     --accent-1: #ffffff;
     --accent-2: #00aaff;
     --accent-3: #00aaff;
@@ -32,6 +32,20 @@ body.light {
 
 html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@supports (height: 100svh) {
+    :root {
+        --full-height: 100svh;
+    }
+}
+
+@supports not (height: 100svh) {
+    :root {
+        --full-height: 100vh;
+    }
 }
 
 @keyframes revealUp {
@@ -100,14 +114,16 @@ html, body {
 }
 
 body {
-    min-height: 100vh;
+    min-height: var(--full-height);
     color: var(--text-main);
     background: var(--bg-main);
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
     font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    line-height: 1.6;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
     transition: background 0.8s cubic-bezier(0.22, 1, 0.36, 1), color 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -166,6 +182,38 @@ button {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
+}
+body.low-end .bg-orb,
+body.low-end .cursor-glow,
+body.low-end::after {
+    display: none !important;
+    animation: none !important;
+}
+
+body.low-end .glass {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(15, 20, 35, 0.9) !important;
+}
+
+body.low-end.light .glass {
+    background: rgba(240, 242, 245, 0.95) !important;
+}
+
+body.low-end * {
+    animation-duration: 0.1s !important;
+    transition-duration: 0.1s !important;
+}
+
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    z-index: 999999;
+    transition: width 0.1s ease-out;
 }
 .cursor-glow {
     position: fixed;
@@ -240,15 +288,25 @@ button {
 
 .glass {
     position: relative;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02)) !important;
-    backdrop-filter: blur(24px) saturate(160%) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    box-shadow: 
-        0 8px 32px 0 rgba(0, 0, 0, 0.3),
-        inset 0 1px 1px rgba(255, 255, 255, 0.15),
-        inset 0 -1px 1px rgba(0, 0, 0, 0.1) !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(20px) saturate(140%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
     overflow: hidden;
+}
+
+body:not(.low-end) .glass, 
+body:not(.low-end) .btn,
+body:not(.low-end) .theme-toggle {
+    filter: url(#liquidFilter);
+}
+
+.svg-filters {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
 }
 
 .glass::before {
@@ -268,7 +326,6 @@ button {
     z-index: 1;
 }
 
-/* Liquid Shimmer Effect */
 .glass::after {
     content: "";
     position: absolute;
@@ -289,7 +346,6 @@ button {
     transform: rotate(45deg) translateY(100%);
 }
 
-/* ---- Fluid Aurora ambient + liquid beam (iOS 26 style) ---- */
 body::after {
     content: "";
     position: fixed;
@@ -483,17 +539,35 @@ header.site-header {
     margin-left: auto;
     margin-right: 15px;
     border: 1px solid var(--line);
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.8);
-    color: #060812;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-main);
     cursor: pointer;
-    transition: 0.75s ease;
-    font-size: 1.2rem;
+    transition: 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    backdrop-filter: blur(5px);
+}
+
+.theme-toggle::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.4), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
 }
 
 .theme-toggle:hover {
-    transform: rotate(15deg) scale(1.05);
-    background: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
 }
 
 .hero {
@@ -546,30 +620,34 @@ header.site-header {
     align-items: center;
     justify-content: center;
     min-height: 48px;
-    padding: 0 20px;
+    padding: 0 24px;
     border-radius: 999px;
     font-weight: 750;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1), background 0.4s ease;
-}
-
-.btn:hover {
-    transform: translateY(-4px) scale(1.03);
-}
-
-.btn:active {
-    transform: scale(0.96);
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
 }
 
 .btn-primary {
-    color: #071018;
-    background: linear-gradient(135deg, #d8fbff, #3f8fba);
-    box-shadow: 0 12px 30px rgba(103, 232, 249, 0.18);
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    color: var(--text-main);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.3), transparent 70%);
+    opacity: 0.8;
 }
 
 .btn-primary:hover {
-    color: var(--text-main);
-    background: rgba(0, 0, 0, 0.12);
-    transition: 0.7s;
+    background: rgba(255, 255, 255, 0.15) !important;
+    transform: translateY(-4px) scale(1.05);
 }
 
 .btn-secondary {
@@ -970,7 +1048,7 @@ body.light .site-header.glass {
 }
 
 body.light .btn-primary {
-    color: #ffffff;    
+    color: #0e0e0e;    
     background: linear-gradient(135deg, #0fd8ee, #3f8fba);
     box-shadow: 0 12px 30px rgba(2, 132, 199, 0.25);
 }
@@ -1100,30 +1178,29 @@ body.light .nav-link {
     }
 
     .main-nav {
-        position: absolute;
-        top: calc(100% + 10px);
-        left: 0;
-        right: 0;
+        position: fixed !important;
+        top: 85px !important;
+        left: 12px !important;
+        right: 12px !important;
         z-index: 2000;
-        padding: 10px;
-        display: flex;
+        padding: 16px;
         flex-direction: column;
         align-items: stretch;
-        border: 1px solid var(--line);
         border-radius: 24px;
-        background: rgba(12, 15, 27, 0.78);
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        box-shadow: var(--shadow);
+        background: rgba(12, 15, 27, 0.85);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         opacity: 0;
-        transform: translateY(-12px) scale(0.96);
+        transform: translateY(-20px);
         pointer-events: none;
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2), opacity 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .main-nav.open {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
         pointer-events: auto;
     }
 
@@ -1160,52 +1237,4 @@ body.light .nav-link {
     }
 }
 
-@media (max-width: 768px) {
-
-    .nav-indicator {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        filter: none !important;
-        background: rgba(255, 255, 255, 0.1) !important;
-    }
-
-    body.light .nav-indicator {
-        background: rgba(0, 0, 0, 0.08) !important;
-        border: none !important;
-    }
-
-    .main-nav {
-        position: absolute !important;
-        top: calc(100% + 10px) !important;
-        left: 0 !important;
-        right: 0 !important;
-        width: 100% !important;
-        padding: 15px !important;
-        border-radius: 16px !important;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
-    }
-
-    body.light .main-nav {
-        background: rgba(245, 247, 250, 0.9) !important;
-        backdrop-filter: blur(2px) !important;
-        -webkit-backdrop-filter: blur(2px) !important;
-        border: 1px solid rgba(0, 0, 0, 0.08) !important;
-    }
-
-    body:not(.light) .main-nav {
-        background: rgba(10, 15, 26, 0.9) !important;
-        backdrop-filter: blur(16px) !important;
-        -webkit-backdrop-filter: blur(16px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    }
-    body.light .nav-indicator,
-    body.light .nav-link.active {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        background: rgba(0, 0, 0, 0.1) !important; 
-        box-shadow: none !important; 
-        border: none !important;
-    }
-
-}
 
