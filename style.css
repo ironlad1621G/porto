@@ -30,6 +30,62 @@ body.light {
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+@keyframes revealUp {
+    from {
+        opacity: 0;
+        transform: translateY(32px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes revealScale {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInSoft {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(32px) scale(0.97);
+}
+
+.reveal.visible {
+    animation: revealUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.92);
+}
+
+.reveal-scale.visible {
+    animation: revealScale 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.stagger-1 { animation-delay: 0.06s !important; }
+.stagger-2 { animation-delay: 0.12s !important; }
+.stagger-3 { animation-delay: 0.18s !important; }
+.stagger-4 { animation-delay: 0.24s !important; }
+.stagger-5 { animation-delay: 0.30s !important; }
+.stagger-6 { animation-delay: 0.36s !important; }
+
 html { 
     background-color: #05080f; 
 }
@@ -52,7 +108,7 @@ body {
     background-position: center;
     font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     line-height: 1.6;
-    transition: background 0.7s ease, color 0.7s ease;
+    transition: background 0.8s cubic-bezier(0.22, 1, 0.36, 1), color 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 section {
@@ -92,6 +148,25 @@ button {
     100% { background-position: 0% 50%; }
 }
 
+.reveal {
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+}
+
+.reveal.visible {
+    animation: springReveal 1s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+}
+
+@keyframes springReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.96);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
 .cursor-glow {
     position: fixed;
     top: 50%;
@@ -200,17 +275,18 @@ header.site-header {
     font-size: 0.95rem;
     font-weight: 800;
     letter-spacing: 0.1em;
-    transition: transform 0.55s ease, box-shadow 0.25s ease, background 0.25s ease;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .logo:hover {
     color: var(--text-main);
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.02);
 }
 
 .logo:active {
     color: var(--text-main);
     background: rgba(255, 255, 255, 0.08);
+    transform: scale(0.96);
 }
 
 .logo span:last-child {
@@ -343,11 +419,15 @@ header.site-header {
     padding: 0 20px;
     border-radius: 999px;
     font-weight: 750;
-    transition: transform 0.55s ease, box-shadow 0.25s ease, background 0.25s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1), background 0.4s ease;
 }
 
 .btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px) scale(1.03);
+}
+
+.btn:active {
+    transform: scale(0.96);
 }
 
 .btn-primary {
@@ -384,13 +464,17 @@ header.site-header {
     color: var(--text-muted);
     font-size: 2.5rem;
     font-weight: 800;
-    transition: 0.75s ease;
+    transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.4s ease, color 0.4s ease;
 }
 
 .socials a:hover {
     color: var(--text-main);
     background: rgba(255, 255, 255, 0.12);
-    transform: translateY(-2px);
+    transform: translateY(-4px) scale(1.1);
+}
+
+.socials a:active {
+    transform: scale(0.92);
 }
 
 .hero-card {
@@ -498,7 +582,7 @@ header.site-header {
     min-height: 250px;
     padding: 30px;
     border-radius: 28px;
-    transition: transform 0.7s ease, background 0.25s ease;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.2), background 0.35s ease, box-shadow 0.4s ease;
 }
 
 .card-label {
@@ -528,12 +612,17 @@ header.site-header {
     min-height: 180px;
     padding: 24px;
     border-radius: 24px;
-    transition: transform 0.7s ease, background 0.25s ease;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.2), background 0.35s ease, box-shadow 0.4s ease;
 }
 
 .skill-card:hover, .info-card:hover, .project-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px) scale(1.02);
     background: var(--glass-strong);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card:active, .info-card:active, .project-card:active {
+    transform: translateY(-2px) scale(0.99);
 }
 
 .skill-number {
@@ -565,7 +654,7 @@ header.site-header {
     border-radius: 28px;
     display: flex;
     flex-direction: column;
-    transition: transform 0.7s ease, background 0.25s ease;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.2), background 0.35s ease, box-shadow 0.4s ease;
 }
 
 .project-card.featured {
@@ -680,8 +769,8 @@ header.site-header {
     padding: 30px;
     border-radius: 28px;
     overflow-y: auto;
-    transform: scale(0.94) translateY(10px);
-    transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
+    transform: scale(0.92) translateY(20px);
+    transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .popup-overlay.active .popup {
@@ -887,7 +976,7 @@ body.light .nav-link {
         right: 0;
         z-index: 2000;
         padding: 10px;
-        display: none;
+        display: flex;
         flex-direction: column;
         align-items: stretch;
         border: 1px solid var(--line);
@@ -896,11 +985,16 @@ body.light .nav-link {
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
         box-shadow: var(--shadow);
+        opacity: 0;
+        transform: translateY(-12px) scale(0.96);
+        pointer-events: none;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2), opacity 0.3s ease;
     }
 
     .main-nav.open {
-        display: flex;
-        transition: transform 0.7s ease, background 0.25s ease;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
     }
 
     .nav-link {

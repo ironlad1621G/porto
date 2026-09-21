@@ -112,18 +112,57 @@ if (currentYearEl) {
     currentYearEl.textContent = new Date().getFullYear();
 }
 
+// Add iOS fluid lerp logic for cursor
 if (cursorGlow && window.innerWidth > 640) {
-    let mouseX = 0, mouseY = 0;
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let cursorX = mouseX;
+    let cursorY = mouseY;
     
     window.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        requestAnimationFrame(() => {
-            cursorGlow.style.left = `${mouseX}px`;
-            cursorGlow.style.top = `${mouseY}px`;
-        });
     });
+
+    function animateCursor() {
+        // Smooth lerp for iOS fluid feel
+        cursorX += (mouseX - cursorX) * 0.12;
+        cursorY += (mouseY - cursorY) * 0.12;
+        
+        cursorGlow.style.left = `${cursorX}px`;
+        cursorGlow.style.top = `${cursorY}px`;
+        
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
 }
+
+// Scroll Reveal with IntersectionObserver
+const revealElements = document.querySelectorAll('section > div, article, .hero-content, .hero-card');
+revealElements.forEach(el => {
+    el.classList.add('reveal');
+});
+
+const revealOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+};
+
+const revealObserver = new IntersectionObserver(function(entries, observer) {
+    entries.forEach((entry, index) => {
+        if (!entry.isIntersecting) return;
+        
+        // Add stagger based on dom order for siblings
+        entry.target.style.animationDelay = `${(index % 5) * 0.1}s`;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+    });
+}, revealOptions);
+
+revealElements.forEach(el => {
+    revealObserver.observe(el);
+});
+
 
 const popupOverlay = document.getElementById("popupOverlay");
 const popupClose = document.getElementById("popupClose");
