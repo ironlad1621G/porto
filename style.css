@@ -124,7 +124,7 @@ body {
     line-height: 1.5;
     letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
-    transition: background 0.8s cubic-bezier(0.22, 1, 0.36, 1), color 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: background 0.9s cubic-bezier(0.22, 1, 0.36, 1), color 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 section {
@@ -229,7 +229,7 @@ body.low-end * {
     transform: translate(-50%, -50%);
     z-index: -2;
     filter: blur(80px);
-    transition: left 0.15s ease-out, top 0.15s ease-out;
+    transition: left 0.9s ease-out, top 0.9s ease-out;
 }
 
 .bg-orb {
@@ -455,7 +455,7 @@ header.site-header {
     font-size: 0.95rem;
     font-weight: 800;
     letter-spacing: 0.1em;
-    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: all 0.9s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .logo:hover {
